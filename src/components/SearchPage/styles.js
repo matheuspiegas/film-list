@@ -2,23 +2,63 @@ import styled, { css } from "styled-components";
 
 export const Container = styled.div`
   ${({ theme }) => css`
-    margin: 0 auto;
-    text-align: center;
-  `}
-`;
-export const ContainerButtons = styled.div`
-  ${({ theme }) => css``}
-`;
-export const ContainerCard = styled.div`
-  ${({ theme }) => css`
     display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
   `}
 `;
 
-export const Card = styled.div`
+export const ContainerMovies = styled.div`
   ${({ theme }) => css`
-    border: 1px solid black;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    width: 70%;
   `}
+`;
+
+export const MovieCard = styled.div`
+  ${({ theme }) => css`
+    text-align: center;
+    width: 200px;
+    flex-direction: column;
+    /* background-color: red; */
+    align-items: center;
+    max-width: 100%;
+    gap: 2rem;
+    > a {
+      text-decoration: none;
+      color: black;
+    }
+    > a img {
+      max-width: 100%;
+      border-radius: 3px;
+      height: 300px;
+      transition: transform 0.3s ease-in-out;
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+    > h2 {
+      word-wrap: break-word;
+    }
+  `}
+`;
+
+export const ContainerPagination = styled.div`
+  /* background-color: red; */
+  margin-bottom: 2rem;
+`;
+export const ContainerPages = styled.div`
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+`;
+export const ContainerButtons = styled.div`
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
 `;

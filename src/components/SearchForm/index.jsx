@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { IoSearch } from "react-icons/io5";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { IoHomeSharp } from "react-icons/io5";
 
 import * as Styled from "./styles";
 
@@ -21,6 +22,9 @@ export const SearchForm = () => {
 
   return (
     <Styled.Container>
+      <Link to="/">
+        <IoHomeSharp />
+      </Link>
       <form onSubmit={handleSubmit}>
         <input type="search" value={value} onChange={handleChange} />
         <button>

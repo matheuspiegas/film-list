@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
+import { GrFormNext, GrFormPrevious } from "react-icons/gr";
 
 import * as Styled from "./styles";
 
@@ -53,18 +54,40 @@ export const SearchPage = () => {
 
   return (
     <Styled.Container>
-      <Styled.ContainerCard>
+      <h1>Results for: {query}</h1>
+      <Styled.ContainerMovies>
         {isLoading && <p>Carregando...</p>}
         {data &&
-          movies.map((movie) => (
-            <Styled.Card key={movie.id}>{movie.title}</Styled.Card>
+          movies.map((m) => (
+            <Styled.MovieCard key={m.id}>
+              <Link
+                to={`https://api.themoviedb.org/3/movie/${m.id}?api_key=3af7189fc51b646e8f9b9b476d6fcbac`}
+              >
+                <img
+                  src={`https://image.tmdb.org/t/p/w300${m.poster_path}`}
+                  alt=""
+                />
+                <h3>{m.title}</h3>
+              </Link>
+            </Styled.MovieCard>
           ))}
-      </Styled.ContainerCard>
-      {page}
-      <div>
-        <button onClick={prevPage}>Anterior</button>
-        <button onClick={nextPage}>Próximo</button>
-      </div>
+      </Styled.ContainerMovies>
+      <Styled.ContainerPagination>
+        {!isLoading && (
+          <Styled.ContainerPages>
+            <p>{page}</p>
+            <p>{data.total_pages}</p>
+          </Styled.ContainerPages>
+        )}
+        <Styled.ContainerButtons>
+          <button onClick={prevPage}>
+            <GrFormPrevious />
+          </button>
+          <button onClick={nextPage}>
+            <GrFormNext />
+          </button>
+        </Styled.ContainerButtons>
+      </Styled.ContainerPagination>
     </Styled.Container>
   );
 };

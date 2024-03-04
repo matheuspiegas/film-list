@@ -2,7 +2,20 @@ import styled, { css } from "styled-components";
 
 export const Container = styled.div`
   ${({ theme }) => css`
-    margin: 2rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    background-color: slategray;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+
+    > a {
+      margin-left: 5rem;
+      font-size: 2rem;
+      text-decoration: none;
+      cursor: pointer;
+      color: #333;
+    }
 
     & form {
       display: flex;
@@ -17,20 +30,6 @@ export const Container = styled.div`
         border-radius: 0.3rem;
         width: 20rem;
         padding: 1rem;
-      }
-      & button {
-        width: 2rem;
-        background-color: #333;
-        border-radius: 0.3rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        outline: none;
-        border: none;
-        cursor: pointer;
-        > svg {
-          color: white;
-        }
       }
     }
   `}

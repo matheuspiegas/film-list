@@ -14,7 +14,7 @@ export const Movies = ({ data }) => {
         data.results &&
         data.results.map((movie) => (
           <Styled.MovieCard key={movie.id}>
-            <Link to={`${movieInfo}${movie.id}?${apiKey}`}>
+            <Link to={`${movieInfo}${movie.id}?api_key=${apiKey}`}>
               <img
                 src={
                   movie.poster_path ? `${imgUrl}${movie.poster_path}` : noImage

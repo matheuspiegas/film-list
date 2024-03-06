@@ -2,26 +2,19 @@ import { useQuery } from "@tanstack/react-query";
 import * as Styled from "./styles";
 import { useParams } from "react-router-dom";
 import noImage from "../../assets/no-image.jpg";
+import { getMovieInfo } from "../../utils/fetchs";
 
 export const Movie = () => {
-  const movieInfo = import.meta.env.VITE_MOVIE_INFO;
+  const movieInfoUrl = import.meta.env.VITE_MOVIE_INFO_URL;
   const apiKey = import.meta.env.VITE_API_KEY;
-  const imgUrl = import.meta.env.VITE_IMG_URL;
+  const imgUrl = import.meta.env.VITE_IMAGE_URL;
 
   const { movieId } = useParams();
 
-  const fetchMovie = async (movieId) => {
-    const response = await fetch(`${movieInfo}${movieId}?api_key=${apiKey}`);
-    const data = await response.json();
-    return data;
-  };
-
   const { data, isLoading, isError } = useQuery({
     queryKey: ["movieInfo", { movieId }],
-    queryFn: () => fetchMovie(movieId),
+    queryFn: () => getMovieInfo(movieInfoUrl, apiKey, movieId),
   });
-
-  //   console.log(data);
 
   return (
     <Styled.ContainerMovie>

@@ -4,7 +4,7 @@ import noImage from "../../assets/no-image.jpg";
 import { Link } from "react-router-dom";
 
 export const Movies = ({ data }) => {
-  const imgUrl = import.meta.env.VITE_IMG_URL;
+  const imageUrl = import.meta.env.VITE_IMAGE_URL;
 
   return (
     <Styled.ContainerMovies>
@@ -15,7 +15,9 @@ export const Movies = ({ data }) => {
             <Link to={`/movie/${movie.id}`}>
               <img
                 src={
-                  movie.poster_path ? `${imgUrl}${movie.poster_path}` : noImage
+                  movie.poster_path
+                    ? `${imageUrl}${movie.poster_path}`
+                    : noImage
                 }
                 alt=""
               />

@@ -6,6 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 
 import { getPopularMovies } from "../../utils/fetchs";
+import { nextPage, prevPage } from "../../utils/actions";
 
 export const Home = () => {
   const popularMoviesUrl = import.meta.env.VITE_POPULAR_MOVIES_URL;
@@ -20,14 +21,6 @@ export const Home = () => {
       getPopularMovies(popularMoviesUrl, apiKey, page, setTotalPages),
   });
 
-  const prevPage = () => {
-    setPage(Math.max(1, page - 1));
-  };
-
-  const nextPage = () => {
-    setPage(Math.min(page + 1, totalPages));
-  };
-
   return (
     <Container>
       <h1>Popular Movies</h1>
@@ -36,6 +29,7 @@ export const Home = () => {
       {!isLoading && data && data.total_pages && (
         <Pagination
           page={page}
+          setPage={setPage}
           totalPages={totalPages}
           nextPage={nextPage}
           prevPage={prevPage}

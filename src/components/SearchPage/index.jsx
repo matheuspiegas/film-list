@@ -5,6 +5,7 @@ import { useSearchParams } from "react-router-dom";
 import { Container } from "../../Styles/reusableStyles";
 import { Pagination } from "../Pagination";
 import { Movies } from "../Movies";
+import { getSearchedMovies } from "../../utils/fetchs";
 
 export const SearchPage = () => {
   const [q] = useSearchParams();
@@ -12,18 +13,13 @@ export const SearchPage = () => {
   const [page, setPage] = useState(1);
 
   const query = q.get("query");
-  const apiurl = import.meta.env.VITE_API_SEARCH;
-
-  const fetchSearch = async (query, page) => {
-    const response = await fetch(`${apiurl}${query}&page=${page}`);
-    const data = await response.json();
-    setTotalPages(data.total_pages);
-    return data;
-  };
+  const searchMoviesUrl = import.meta.env.VITE_SEARCH_MOVIES_URL;
+  const apiKey = import.meta.env.VITE_API_KEY;
 
   const { data, isLoading } = useQuery({
     queryKey: ["search", { query, page }],
-    queryFn: () => fetchSearch(query, page),
+    queryFn: () =>
+      getSearchedMovies(searchMoviesUrl, apiKey, query, page, setTotalPages),
   });
 
   useEffect(() => {
@@ -35,7 +31,7 @@ export const SearchPage = () => {
   };
 
   const nextPage = () => {
-    page === totalPages ? setPage(page) : setPage(page + 1);
+    setPage(Math.min(page + 1, totalPages));
   };
 
   return (

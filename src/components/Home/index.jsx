@@ -5,21 +5,19 @@ import { Movies } from "../Movies";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 
+import { getPopularMovies } from "../../utils/fetchs";
+
 export const Home = () => {
-  const apiUrl = import.meta.env.VITE_API_POPULAR;
+  const popularMoviesUrl = import.meta.env.VITE_POPULAR_MOVIES_URL;
+  const apiKey = import.meta.env.VITE_API_KEY;
 
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
 
-  const fetchDiscover = async (page) => {
-    const response = await fetch(`${apiUrl}${page}`);
-    const data = await response.json();
-    setTotalPages(data.total_pages);
-    return data;
-  };
   const { data, isLoading, isError } = useQuery({
     queryKey: ["discover", { page }],
-    queryFn: () => fetchDiscover(page),
+    queryFn: () =>
+      getPopularMovies(popularMoviesUrl, apiKey, page, setTotalPages),
   });
 
   const prevPage = () => {
@@ -27,7 +25,7 @@ export const Home = () => {
   };
 
   const nextPage = () => {
-    page === totalPages ? setPage(page) : setPage(page + 1);
+    setPage(Math.min(page + 1, totalPages));
   };
 
   return (

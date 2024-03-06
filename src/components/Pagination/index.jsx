@@ -5,7 +5,13 @@ import * as Styled from "./styles";
 import { GrFormNext } from "react-icons/gr";
 import { GrFormPrevious } from "react-icons/gr";
 
-export const Pagination = ({ page, totalPages, nextPage, prevPage }) => {
+export const Pagination = ({
+  page,
+  setPage,
+  totalPages,
+  nextPage,
+  prevPage,
+}) => {
   return (
     <Styled.ContainerPagination>
       <Styled.Pages>
@@ -13,11 +19,14 @@ export const Pagination = ({ page, totalPages, nextPage, prevPage }) => {
         <p>{totalPages}</p>
       </Styled.Pages>
       <Styled.PagesControl>
-        <button onClick={prevPage} disabled={page === 1 ? true : false}>
+        <button
+          onClick={() => prevPage(page, setPage)}
+          disabled={page === 1 ? true : false}
+        >
           <GrFormPrevious />
         </button>
         <button
-          onClick={nextPage}
+          onClick={() => nextPage(page, setPage, totalPages)}
           disabled={page === totalPages ? true : false}
         >
           <GrFormNext />
@@ -29,6 +38,7 @@ export const Pagination = ({ page, totalPages, nextPage, prevPage }) => {
 
 Pagination.propTypes = {
   page: P.number.isRequired,
+  setPage: P.func.isRequired,
   totalPages: P.number.isRequired,
   nextPage: P.func.isRequired,
   prevPage: P.func.isRequired,

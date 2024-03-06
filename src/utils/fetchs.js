@@ -1,5 +1,5 @@
-export const getPopularMovies = async (link, apiKey, page, setTotalPages) => {
-  const response = await fetch(`${link}${apiKey}&page=${page}`);
+export const getPopularMovies = async (popularMoviesUrl, apiKey, page, setTotalPages) => {
+  const response = await fetch(`${popularMoviesUrl}${apiKey}&page=${page}`);
   const data = await response.json();
   setTotalPages(data.total_pages);
   return data;

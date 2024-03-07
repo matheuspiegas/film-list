@@ -23,7 +23,6 @@ export const Home = () => {
 
   return (
     <Container>
-      <h1>Popular Movies</h1>
       {isError && <p>Ocorreu um erro ao buscar dados!</p>}
       {!isLoading && data && data.results && <Movies data={data} />}
       {!isLoading && data && data.total_pages && (

@@ -10,21 +10,35 @@ export const Movies = ({ data }) => {
     <Styled.ContainerMovies>
       {data &&
         data.results &&
-        data.results.map((movie) => (
-          <Styled.MovieCard key={movie.id}>
-            <Link to={`/movie/${movie.id}`}>
-              <img
-                src={
-                  movie.poster_path
-                    ? `${imageUrl}${movie.poster_path}`
-                    : noImage
-                }
-                alt=""
-              />
-              <Styled.MovieTitle>{movie.title}</Styled.MovieTitle>
-            </Link>
-          </Styled.MovieCard>
-        ))}
+        data.results.map((movie) => {
+          let date = new Date(movie.release_date);
+          let formatedDate = `${
+            Number(date.toLocaleString("pt-BR", { day: "numeric" })) + 1
+          } de ${date
+            .toLocaleString("pt-BR", { month: "short" })
+            .substring(-1, 3)} de ${date.toLocaleString("pt-BR", {
+            year: "numeric",
+          })}`;
+          return (
+            <Styled.MovieCard key={movie.id}>
+              <Link to={`/movie/${movie.id}`}>
+                <img
+                  src={
+                    movie.poster_path
+                      ? `${imageUrl}${movie.poster_path}`
+                      : noImage
+                  }
+                  alt=""
+                />
+                <Styled.MovieInfo>
+                  <h3>{movie.title}</h3>
+                  <span>{formatedDate}</span>
+                  <p>{movie.overview}</p>
+                </Styled.MovieInfo>
+              </Link>
+            </Styled.MovieCard>
+          );
+        })}
     </Styled.ContainerMovies>
   );
 };

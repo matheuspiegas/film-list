@@ -7,11 +7,6 @@ export const Container = styled.div`
     justify-content: center;
     align-items: center;
     gap: 2rem;
+    margin-top: 6rem;
   `}
-  h1 {
-    font-size: 3rem;
-    letter-spacing: 0.3rem;
-    font-weight: normal;
-  }
 `;
-

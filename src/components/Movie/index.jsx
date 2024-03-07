@@ -16,20 +16,31 @@ export const Movie = () => {
     queryFn: () => getMovieInfo(movieInfoUrl, apiKey, movieId),
   });
 
+  console.log(data);
+  let date = "";
+  if (data && data.release_date) {
+    date = data.release_date;
+  }
+
   return (
-    <Styled.ContainerMovie>
+    <Styled.Container>
       {isLoading && <p>Carregando...</p>}
       {isError && <p>Algo deu errado!</p>}
       {data && data.title && (
-        <div>
-          <img
+        <Styled.Card>
+          <Styled.Poster
             src={data.poster_path ? `${imgUrl}${data.poster_path}` : noImage}
             alt=""
           />
-          <h1>{data.title}</h1>
-          <p>{data.overview}</p>
-        </div>
+          <Styled.Info>
+            <h2>
+              {data.title} <span>({date.substring(0, 4)})</span>
+            </h2>
+            <h3>Sinopse: </h3>
+            <p>{data.overview}</p>
+          </Styled.Info>
+        </Styled.Card>
       )}
-    </Styled.ContainerMovie>
+    </Styled.Container>
   );
 };

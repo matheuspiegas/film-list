@@ -8,7 +8,7 @@ export const ContainerMovies = styled.div`
   width: 70%;
   @media (max-width: 768px) {
     width: 100%;
-    padding: 1rem;
+    padding: 2rem;
   }
 `;
 
@@ -23,14 +23,14 @@ export const MovieCard = styled.div`
     width: 100%;
     a {
       display: flex;
-      height: 100px;
+      height: 120px;
     }
     a > img {
       height: 100% !important;
+      width: 80px;
       border-radius: 10px 0px 0px 10px !important;
     }
   }
-  gap: 2rem;
   > a {
     text-decoration: none;
     color: black;
@@ -43,10 +43,11 @@ export const MovieCard = styled.div`
 `;
 export const MovieInfo = styled.div`
   display: flex;
+  height: 100%;
   flex-direction: column;
   overflow: hidden;
   padding: 0.6rem;
-  gap: 0.4rem 0;
+  gap: 0.5rem 0;
   h3 {
     font-weight: 600;
     font-size: 16px;
@@ -60,6 +61,7 @@ export const MovieInfo = styled.div`
     display: none;
   }
   @media (max-width: 768px) {
+    gap: 0.7rem;
     h3 {
       font-weight: normal;
     }
@@ -69,7 +71,6 @@ export const MovieInfo = styled.div`
     }
     p {
       display: block;
-      margin-top: 0.5rem;
       font-size: 12px;
       white-space: nowrap;
       overflow: hidden;

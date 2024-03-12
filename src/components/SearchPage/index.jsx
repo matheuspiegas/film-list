@@ -44,6 +44,7 @@ export const SearchPage = () => {
           totalPages={totalPages}
           nextPage={nextPage}
           prevPage={prevPage}
+          setPage={setPage}
         />
       )}
     </Container>

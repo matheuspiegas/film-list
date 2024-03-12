@@ -28,17 +28,21 @@ export const Movie = () => {
       {isError && <p>Algo deu errado!</p>}
       {data && data.title && (
         <Styled.Card>
-          <Styled.Poster
-            src={data.poster_path ? `${imgUrl}${data.poster_path}` : noImage}
-            alt=""
-          />
-          <Styled.Info>
-            <h2>
-              {data.title} <span>({date.substring(0, 4)})</span>
-            </h2>
-            <h3>Sinopse: </h3>
-            <p>{data.overview}</p>
-          </Styled.Info>
+          <Styled.ContainerPoster>
+            <Styled.Poster
+              src={data.poster_path ? `${imgUrl}${data.poster_path}` : noImage}
+              alt=""
+            />
+          </Styled.ContainerPoster>
+          <Styled.ContainerInfo>
+            <Styled.Info>
+              <h2>
+                {data.title} <span>({date.substring(0, 4)})</span>
+              </h2>
+              <h3>Sinopse: </h3>
+              <p>{data.overview}</p>
+            </Styled.Info>
+          </Styled.ContainerInfo>
         </Styled.Card>
       )}
     </Styled.Container>

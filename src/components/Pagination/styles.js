@@ -21,3 +21,7 @@ export const PagesControl = styled.div`
   gap: 1rem;
   justify-content: center;
 `;
+export const ButtonPagination = styled.button`
+  height: 1.3rem;
+  width: 2.5rem;
+`;

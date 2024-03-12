@@ -30,12 +30,12 @@ export const Movies = ({ data }) => {
                   }
                   alt=""
                 />
+              </Link>
                 <Styled.MovieInfo>
                   <h3>{movie.title}</h3>
                   <span>{formatedDate}</span>
                   <p>{movie.overview}</p>
                 </Styled.MovieInfo>
-              </Link>
             </Styled.MovieCard>
           );
         })}

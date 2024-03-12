@@ -2,35 +2,39 @@ import styled, { css } from "styled-components";
 
 export const Container = styled.div`
   ${({ theme }) => css`
-    display: grid;
-    grid-template-columns: auto 1fr;
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
     background-color: slategray;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-
-    > a {
-      margin-left: 5rem;
-      font-size: 2rem;
-      text-decoration: none;
-      cursor: pointer;
-      color: #333;
-    }
-
-    & form {
-      display: flex;
-      gap: 0 1rem;
-      align-items: stretch;
-      justify-content: center;
-      height: 2rem;
-      & input {
-        border: none;
-        background-color: #ccc;
-        outline: none;
-        border-radius: 0.3rem;
-        width: 20rem;
-        padding: 1rem;
-      }
-    }
+    width: 100%;
+    height: 5rem;
   `}
+`;
+
+export const ContainerHome = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  a svg {
+    margin-top: 3.8px;
+    color: black;
+    font-size: 26px;
+  }
+`;
+export const ContainerForm = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const Form = styled.form`
+  display: flex;
+  gap: 0.3rem;
+  input {
+    padding: 3px;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+  }
 `;

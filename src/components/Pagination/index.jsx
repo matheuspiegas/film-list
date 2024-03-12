@@ -19,18 +19,18 @@ export const Pagination = ({
         <p>{totalPages}</p>
       </Styled.Pages>
       <Styled.PagesControl>
-        <button
+        <Styled.ButtonPagination
           onClick={() => prevPage(page, setPage)}
           disabled={page === 1 ? true : false}
         >
           <GrFormPrevious />
-        </button>
-        <button
+        </Styled.ButtonPagination>
+        <Styled.ButtonPagination
           onClick={() => nextPage(page, setPage, totalPages)}
           disabled={page === totalPages ? true : false}
         >
           <GrFormNext />
-        </button>
+        </Styled.ButtonPagination>
       </Styled.PagesControl>
     </Styled.ContainerPagination>
   );

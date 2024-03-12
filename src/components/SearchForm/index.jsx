@@ -22,15 +22,23 @@ export const SearchForm = () => {
 
   return (
     <Styled.Container>
-      <Link to="/">
-        <IoHomeSharp />
-      </Link>
-      <form onSubmit={handleSubmit}>
-        <input type="search" value={value} onChange={handleChange} />
-        <button>
-          <IoSearch />
-        </button>
-      </form>
+      <Styled.ContainerHome>
+        <Link to="/">
+          <IoHomeSharp />
+        </Link>
+      </Styled.ContainerHome>
+      <Styled.ContainerForm>
+        <Styled.Form onSubmit={handleSubmit}>
+          <input
+            placeholder="Search a movie"
+            value={value}
+            onChange={handleChange}
+          />
+          <button>
+            <IoSearch />
+          </button>
+        </Styled.Form>
+      </Styled.ContainerForm>
     </Styled.Container>
   );
 };
